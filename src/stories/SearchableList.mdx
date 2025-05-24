@@ -1,0 +1,93 @@
+import { Meta, Story, Canvas, Controls, Source } from '@storybook/blocks';
+import * as SearchableListStories from './SearchableList.stories';
+
+<Meta of={SearchableListStories} />
+
+# SearchableList Component
+
+A React component featuring a searchable, grouped list with expandable sections. Built with TypeScript and styled-components.
+
+## Installation
+
+1. Install the required dependencies:
+
+<Source language="bash" code={`
+# Using npm
+npm install styled-components @types/styled-components
+
+# Using yarn
+yarn add styled-components @types/styled-components
+`} />
+
+2. Import the component:
+
+<Source language="tsx" code={`
+import { SearchableList } from '../components/SearchableList/SearchableList';
+`} />
+
+## Basic Usage
+
+Here's a basic example of how to use the SearchableList component:
+
+<Source language="tsx" code={`
+const contacts = [
+  {
+    title: 'Attended',
+    items: [
+      {
+        id: '1',
+        primaryText: 'Dianne Russell',
+        secondaryText: 'dianne@example.com',
+        avatarUrl: 'https://example.com/avatar1.jpg',
+        highlighted: true,
+      },
+    ],
+  },
+];
+
+function App() {
+  const handleItemSelect = (item) => {
+    console.log('Selected:', item);
+  };
+
+  const handleSectionToggle = (sectionTitle, expanded) => {
+    console.log('Section toggled:', sectionTitle, expanded);
+  };
+
+  return (
+    <SearchableList
+      contacts={contacts}
+      onItemSelect={handleItemSelect}
+      onSectionToggle={handleSectionToggle}
+      placeholder="Search contacts..."
+      showEmail={true}
+    />
+  );
+}
+`} />
+
+## Interactive Example
+
+Try out the component with different configurations:
+
+<Canvas of={SearchableListStories.Interactive} />
+
+<Controls />
+
+## Features
+
+- 🔍 Real-time search functionality across all groups
+- 👥 Collapsible group sections
+- 📱 Responsive design that works across all devices
+- 🎯 TypeScript support
+
+## Examples
+
+### Base State (No Email)
+<Canvas of={SearchableListStories.BaseState} />
+
+### With Email Addresses
+<Canvas of={SearchableListStories.WithEmail} />
+
+### Empty State
+<Canvas of={SearchableListStories.Empty} />
